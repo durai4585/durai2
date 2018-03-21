@@ -1,0 +1,48 @@
+
+<!-- Page Header -->
+<div class="feedHeader">
+	<div class="dayWise">
+		<a href="" class="sectionHeader">
+			<h2 class="borderYellow">LATEST STORIES</h2> <span>Today's
+				Global Collection</span>
+		</a>
+	</div>
+</div>
+<!-- /.row -->
+<!-- Projects Row -->
+<!-- <section id="feed"> -->
+
+	<div class="search-results" infinite-scroll
+		[infiniteScrollDistance]="2" [infiniteScrollThrottle]="10"
+		(scrolled)="onScrollDown()">
+		<ul>
+			<li *ngFor="let post of posts">
+	
+				<a href = {{post.url}}>
+				
+				<div class="postPhoto imgLoaded">
+					<img class="img-responsive" src={{post.image}} alt=""
+						style="display: inline;">
+				</div>
+
+				<div class="postInfo">
+					<div class="heart"></div>
+					<h3>{{post.title}}</h3>
+
+					<div class="postMeta">
+						<span title="" class="source dribbble">Dribbble</span>
+						<div class="stats">
+							<span class="views" title="">{{post.views_count}}</span>
+						</div>
+					</div>
+				</div>
+		</a>
+				
+				
+			</li>
+		</ul>
+	</div>
+
+<!-- </section> -->
+<!-- /.row -->
+
