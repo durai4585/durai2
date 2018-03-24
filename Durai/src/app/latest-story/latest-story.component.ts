@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { parseString } from 'xml2js';
 import { XmlObjects } from 'xml-objects';
+
 
 import { LatestStoryService } from "../latest-story.service";
 
@@ -16,7 +19,7 @@ import { LatestStoryService } from "../latest-story.service";
 export class LatestStoryComponent implements OnInit {
 
  posts = [];
-  pageNumber=1;
+ pageNumber=1;
 
   constructor(private http: HttpClient,private latestStoryService : LatestStoryService) {}
 
@@ -29,7 +32,6 @@ export class LatestStoryComponent implements OnInit {
     this.getData();
   }
 
-    
   getData() {
    console.log(this.pageNumber);
     this.latestStoryService.getScreenShots(this.pageNumber).subscribe(results => {
@@ -53,17 +55,18 @@ export class LatestStoryComponent implements OnInit {
           "views_count":element.views_count
         });
       });
-
-       console.log(results[2]);
-       // console.log(print());
-             // console.log(this.print(results[2]));
-        console.log(JSON.stringify(parseString(results[2].rss.channel.item)));
-    
-      console.log(this.pageNumber);
         
+         console.log(results[2]);
+         //console.log(JSON.stringify(parseString(results[2].rss.channel.item)));
+
+      list.forEach(element => {
+      
+        this.posts.push(element);
+      });
+     
+      console.log(this.pageNumber);
     });
   }
-    
 
 
 }
