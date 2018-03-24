@@ -10,39 +10,35 @@
 </div>
 <!-- /.row -->
 <!-- Projects Row -->
-<!-- <section id="feed"> -->
 
-	<div class="search-results" infinite-scroll
-		[infiniteScrollDistance]="2" [infiniteScrollThrottle]="10"
-		(scrolled)="onScrollDown()">
+<section id="feed" infinite-scroll
+		[infiniteScrollDistance]="2" [infiniteScrollThrottle]="300"
+		 (scrolled)="onScrollDown()" [scrollWindow]="true">
+
+	<div  class="search-results">
 		<ul>
-			<li *ngFor="let post of posts">
-	
-				<a href = {{post.url}}>
-				
-				<div class="postPhoto imgLoaded">
-					<img class="img-responsive" src={{post.image}} alt=""
-						style="display: inline;">
-				</div>
+			<li *ngFor="let post of posts"><a href={{post.url}}>
 
-				<div class="postInfo">
-					<div class="heart"></div>
-					<h3>{{post.title}}</h3>
+					<div class="postPhoto imgLoaded">
+						<img class="img-responsive" src={{post.image}} alt=""
+							style="display: inline;">
+					</div>
 
-					<div class="postMeta">
-						<span title="" class="source dribbble">Dribbble</span>
-						<div class="stats">
-							<span class="views" title="">{{post.views_count}}</span>
+					<div class="postInfo">
+						<div class="heart"></div>
+						<h3>{{post.title}}</h3>
+
+						<div class="postMeta">
+							<span title="" class="source dribbble">Dribbble</span>
+							<div class="stats">
+								<span class="views" title="">{{post.views_count}}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-		</a>
-				
-				
-			</li>
+			</a></li>
 		</ul>
 	</div>
 
-<!-- </section> -->
+</section>
 <!-- /.row -->
 
