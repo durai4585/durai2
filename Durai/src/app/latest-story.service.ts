@@ -30,6 +30,7 @@ export class LatestStoryService {
   , responseType:'text'})
     
 
+    //https://www.behance.net/v2/users/PerumalUXD/collections?api_key=OGWw0DdyHFb4h9zjKIXAFNKvPG1iJRJ6
     //this._http.get('https://medium.com/feed/topic/digital-design',)
     //https://medium.com/feed/@uxplanet
   
