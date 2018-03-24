@@ -18,9 +18,20 @@ export class LatestStoryService {
         .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS') 
         .append('Access-Control-Allow-Origin', '*')
         .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
+  , responseType:'text'}),
+    this._http.get('https://medium.com/feed/@uxplanet',{
+        headers: new HttpHeaders()
+        .set('Content-Type', 'text/xml') 
+        .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS') 
+        .append('Access-Control-Allow-Origin', '*')
+         .append('Access-Control-Allow-Credentials', true)
+        //.append('Access-Control-Allow-Headers', "Access-Control-Request-Method")
+        .append('Access-Control-Allow-Headers: Content-Type, Authorization, origin, X-PINGOTHER')
   , responseType:'text'})
+    
 
     //this._http.get('https://medium.com/feed/topic/digital-design',)
+    //https://medium.com/feed/@uxplanet
   
   ]);
   
