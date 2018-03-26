@@ -41,7 +41,21 @@ export class LatestStoryService {
 
             //-------------------medium------------------//
             //this._http.get<any[]>('https://medium.com/feed/@uxplanet')
+            //   or      https://medium.com/feed/topic/digital-design
 
+            //-------------------thenextweb------------------//
+            //this._http.get<any[]>('https://thenextweb.com/feed')
+
+
+            //-------------------pixabay------------------//
+            //https://pixabay.com/api/?key=8459865-2d66ad6fa313800389166bfcb
+            //https://pixabay.com/api/?key=8459865-2d66ad6fa313800389166bfcb&q=yellow+flowers&image_type=photo
+
+
+            //Referance:
+            //https://usepanda.com/app/#/
+            //https://www.prototypr.io/home/
+            //https://news.ycombinator.com/news
 
 
         ]);

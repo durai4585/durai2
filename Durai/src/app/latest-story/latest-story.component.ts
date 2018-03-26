@@ -88,12 +88,13 @@ export class LatestStoryComponent implements OnInit {
 
             //----------------------medium------------------------------//
             //console.log(results[4]);
-            
+
             //let JSON_HIJACKING_PREFIX = '])}while(1);</x>';
-            
-             //console.log(JSON.parse(results[4].replace(JSON_HIJACKING_PREFIX, '')));
 
+            //console.log(JSON.parse(results[4].replace(JSON_HIJACKING_PREFIX, '')));
 
+            //----------------------thenextweb------------------------------//
+            // console.log(results[5]);   
 
             list.forEach(element => {
 
