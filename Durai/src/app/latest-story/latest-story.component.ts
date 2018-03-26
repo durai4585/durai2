@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-
-import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from "rxjs/observable/forkJoin";
-import { parseString } from 'xml2js';
-import { XmlObjects } from 'xml-objects';
-
 
 import { LatestStoryService } from "../latest-story.service";
+import { parseString } from 'xml2js';
 
 @Component({
     selector: 'app-latest-story',
@@ -23,7 +19,6 @@ export class LatestStoryComponent implements OnInit {
 
     constructor(private http: HttpClient, private latestStoryService: LatestStoryService) { }
 
-
     ngOnInit() {
         this.getData();
     }
@@ -33,40 +28,73 @@ export class LatestStoryComponent implements OnInit {
     }
 
     getData() {
-        console.log(this.pageNumber);
         this.latestStoryService.getScreenShots(this.pageNumber).subscribe(results => {
             let list = [];
 
+            //----------------------dribbble------------------------------//
+
             results[0].forEach(element => {
-                console.log(element);
                 list.push({
                     "title": element.title,
                     "image": element.images.normal,
                     "url": element.html_url,
-                    "views_count": element.views_count
+                    "views_count": element.views_count,
+                    "source": "dribbble"
                 });
             });
-            results[1].forEach(element => {
-                console.log(element);
+
+            //----------------------designernews------------------------------//
+
+            parseString(results[1], function(err, result) {
+                //console.log(result.rss.channel[0].item);
+                result.rss.channel[0].item.forEach(element => {
+                    list.push({
+                        "title": element.title,
+                        "url": element.link,
+                        "source": "designernews",
+                        "image": 'assets/images/dn.png',
+                    });
+                    //console.log(element.title[0]);
+                });
+            });
+
+            //----------------------producthunt------------------------------//
+
+            parseString(results[2], function(err, result) {
+                // console.log(result);
+                result.feed.entry.forEach(element => {
+                    list.push({
+                        "title": element.title,
+                        "url": element.link,
+                        "source": "producthunt",
+                        "image": 'assets/images/dn.png',
+                    });
+                    //console.log(element.title[0]);
+                });
+            });
+
+            //----------------------behance------------------------------//
+
+            results[3].projects.forEach(element => {
+                console.log("element : " + element.name);
                 list.push({
-                    "title": element.title,
-                    "image": element.images.normal,
-                    "url": element.html_url,
-                    "views_count": element.views_count
+                    "title": element.name,
+                    "image": element.covers.original,
+                    "url": element.url,
+                    "source": "behance"
                 });
             });
 
-            // console.log(results[2] ? results[2] : 'json_data is null or undefin      
-             parseString(results[2], function(err, result) {
 
-                console.log(JSON.parse(JSON.stringify(result)).rss.channel[0].item); 
-                return  JSON.parse(JSON.stringify(result)).rss.channel[0].item;
-            });
+            //----------------------medium------------------------------//
+            console.log(results[4]);
+            
+            let JSON_HIJACKING_PREFIX = '])}while(1);</x>';
+            
+             console.log(JSON.parse(results[4].replace(JSON_HIJACKING_PREFIX, '')));
 
 
-         
 
-            //console.log(results[3] ? results[3].length : 'json_data is null or undefined    
             list.forEach(element => {
 
                 this.posts.push(element);
