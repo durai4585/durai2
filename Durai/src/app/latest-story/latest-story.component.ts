@@ -27,6 +27,18 @@ export class LatestStoryComponent implements OnInit {
         this.getData();
     }
 
+
+    predicateBy(prop) {
+        return function(a, b) {
+            if (a[prop] > b[prop]) {
+                return 1;
+            } else if (a[prop] < b[prop]) {
+                return -1;
+            }
+            return 0;
+        }
+    }
+
     getData() {
         this.latestStoryService.getScreenShots(this.pageNumber).subscribe(results => {
             let list = [];
@@ -100,6 +112,9 @@ export class LatestStoryComponent implements OnInit {
 
                 this.posts.push(element);
             });
+            this.posts.sort(this.predicateBy('title'));
+
+
 
             console.log(this.pageNumber);
         });
