@@ -11,6 +11,7 @@ import { LatestStoryComponent } from './latest-story/latest-story.component';
 import { LoginComponent } from './login/login.component';
 
 import { LatestStoryService } from './latest-story.service';
+import { HandPickedService } from './hand-picked.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { LatestStoryService } from './latest-story.service';
   imports: [
     BrowserModule, InfiniteScrollModule , FormsModule, HttpClientModule
   ],
-  providers: [LatestStoryService ],
+  providers: [LatestStoryService,HandPickedService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

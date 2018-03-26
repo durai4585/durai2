@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HandPickedService } from '../hand-picked.service';
 
 @Component({
   selector: 'app-hand-picked',
@@ -6,10 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hand-picked.component.css']
 })
 export class HandPickedComponent implements OnInit {
-
-  constructor() { }
+  posts = [];
+  pageNumber = 1;
+  constructor(private handPickedService: HandPickedService) { }
 
   ngOnInit() {
+      this.getData();
   }
+
+  getData() {
+      this.handPickedService.getScreenShots(this.pageNumber).subscribe(results => {
+          let list = [];
+          results[0].forEach(element => {
+              list.push({
+                  "title": element.title,
+                  "image": element.images.normal,
+                  "url": element.html_url,
+                  "views_count": element.views_count,
+                  "source": "dribbble"
+              });
+          });
+          list.forEach(element => {
+              this.posts.push(element);
+          });
+          
+        });
+      }
 
 }
