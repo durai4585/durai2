@@ -76,7 +76,7 @@ export class LatestStoryComponent implements OnInit {
             //----------------------behance------------------------------//
 
             results[3].projects.forEach(element => {
-                console.log("element : " + element.name);
+                //console.log("element : " + element.name);
                 list.push({
                     "title": element.name,
                     "image": element.covers.original,
@@ -87,11 +87,11 @@ export class LatestStoryComponent implements OnInit {
 
 
             //----------------------medium------------------------------//
-            console.log(results[4]);
+            //console.log(results[4]);
             
-            let JSON_HIJACKING_PREFIX = '])}while(1);</x>';
+            //let JSON_HIJACKING_PREFIX = '])}while(1);</x>';
             
-             console.log(JSON.parse(results[4].replace(JSON_HIJACKING_PREFIX, '')));
+             //console.log(JSON.parse(results[4].replace(JSON_HIJACKING_PREFIX, '')));
 
 
 

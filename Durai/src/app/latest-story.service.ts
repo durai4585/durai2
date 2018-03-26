@@ -40,7 +40,7 @@ export class LatestStoryService {
             this._http.get<any[]>('https://www.behance.net/v2/projects?sort=published_date&field=132&content=project&api_key=OGWw0DdyHFb4h9zjKIXAFNKvPG1iJRJ6'),
 
             //-------------------medium------------------//
-            this._http.get<any[]>('https://medium.com/feed/@uxplanet')
+            //this._http.get<any[]>('https://medium.com/feed/@uxplanet')
 
 
 
