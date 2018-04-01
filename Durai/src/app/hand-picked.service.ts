@@ -10,8 +10,6 @@ export class HandPickedService {
 constructor(private _http: HttpClient) { }
 
   getScreenShots(page: number): Observable<any[]> {
-    return forkJoin([
-    this._http.get('./assets/data/handpicked.json');
-    ]);
+    return forkJoin( this._http.get('./assets/data/handpicked.json'));
   }
 }

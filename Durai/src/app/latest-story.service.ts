@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { parseString } from 'xml2js';
 import * as xml2js from "xml2js";
-import {map}  from 'rxjs/add/operator/map';
 
 @Injectable()
 export class LatestStoryService {
-    constructor(private _http: HttpClient) { }
+        
+     _http: HttpClient;
+       
+    constructor() { }
 
-    getScreenShots(private page: number): Observable<any[]> {
+    getScreenShots( page: number): Observable<any[]> {
         return forkJoin([
 
             //-------------------dribbble------------------//
@@ -23,7 +25,7 @@ export class LatestStoryService {
                     .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS')
                     .append('Access-Control-Allow-Origin', '*')
                     .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
-                , responseType: 'text'
+                , responseType: 'json'
             }),
 
             //-------------------producthunt------------------//
@@ -33,7 +35,7 @@ export class LatestStoryService {
                     .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS')
                     .append('Access-Control-Allow-Origin', '*')
                     .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
-                , responseType: 'text'
+                , responseType: 'json'
             }),
 
             //-------------------behance------------------//
