@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { parseString } from 'xml2js';
@@ -7,10 +8,9 @@ import * as xml2js from "xml2js";
 
 @Injectable()
 export class LatestStoryService {
-        
-     _http: HttpClient;
+
        
-    constructor() { }
+    constructor( private _http: HttpClient) { }
 
     getScreenShots( page: number): Observable<any[]> {
         return forkJoin([
@@ -25,7 +25,7 @@ export class LatestStoryService {
                     .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS')
                     .append('Access-Control-Allow-Origin', '*')
                     .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
-                , responseType: 'json'
+                , responseType: 'text'
             }),
 
             //-------------------producthunt------------------//
@@ -35,7 +35,7 @@ export class LatestStoryService {
                     .append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS')
                     .append('Access-Control-Allow-Origin', '*')
                     .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
-                , responseType: 'json'
+                , responseType: 'text'
             }),
 
             //-------------------behance------------------//

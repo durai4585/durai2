@@ -73,13 +73,13 @@ export class LatestStoryComponent implements OnInit {
             //----------------------producthunt------------------------------//
 
             parseString(results[2], function(err, result) {
-                // console.log(result);
+                 console.log(result);
                 result.feed.entry.forEach(element => {
                     list.push({
                         "title": element.title,
                         "url": element.link,
                         "source": "producthunt",
-                        "image": 'assets/images/dn.png',
+                        "image": 'assets/images/ph.png',
                     });
                     //console.log(element.title[0]);
                 });
